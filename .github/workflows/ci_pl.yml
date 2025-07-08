@@ -1,0 +1,35 @@
+name: CI_pipeline
+
+on:
+    push:
+
+jobs:
+    ci-pipeline:
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v4
+
+        - name: Setup Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: 3.12.11
+        
+        - name: Install dependencies
+          run:
+            pip install -r requirements.txt
+            
+        - name: Format
+          run: |
+            pip install black
+            black main.py
+        
+        - name: Lint
+          run: |
+            pip install flake8
+            flake8 main.py
+        
+        - name: Test
+          run: |
+            pip install pytest
+            pytest tests.py
