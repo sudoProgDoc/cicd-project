@@ -31,7 +31,7 @@ jobs:
         - name: Test
           run:
             pytest tests.py
-        - name: Commit and push formatted code to main
+        - name: Commit and push formatted code to main branch
           run: |
             git config user.name "github-actions"
             git config user.email "actions@github.com"
