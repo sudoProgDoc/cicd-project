@@ -1,11 +1,11 @@
-name: CI_pipeline
+name: ci-cd-pipeline
 
 on:
     push:
       branches: [ "dev" ]
 
 jobs:
-    ci-pipeline:
+    ci-cd-pipeline:
         runs-on: ubuntu-latest
 
         steps:
@@ -52,3 +52,7 @@ jobs:
           run: |
             docker build -t ghcr.io/${{ github.repository_owner }}/cicdproject:latest .
             docker push ghcr.io/${{ github.repository_owner }}/cicdproject:latest
+        
+        - name: Deploy to server via SSH
+          uses: appleboy/ssh-action@v0.1.7
+          # дописать сюда деплой по ssh когда сделаю сервер
