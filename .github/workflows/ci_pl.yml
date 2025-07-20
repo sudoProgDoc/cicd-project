@@ -2,6 +2,7 @@ name: CI_pipeline
 
 on:
     push:
+      branches: [ "dev" ]
 
 jobs:
     ci-pipeline:
@@ -13,7 +14,7 @@ jobs:
         - name: Setup Python
           uses: actions/setup-python@v4
           with:
-            python-version: 3.12.11
+            python-version: 3.12.11-slim
         
         - name: Install dependencies
           run: |
@@ -21,16 +22,14 @@ jobs:
             pip install -r requirements-dev.txt
             
         - name: Format
-          run:
-            black main.py
+          run: black main.py
         
         - name: Lint
-          run:
-            flake8 main.py
+          run: flake8 main.py
         
         - name: Test
-          run:
-            pytest tests.py
+          run: pytest tests.py
+
         - name: Commit and push formatted code to master branch
           run: |
             git config user.name "github-actions"
