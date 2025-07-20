@@ -16,20 +16,18 @@ jobs:
             python-version: 3.12.11
         
         - name: Install dependencies
-          run:
+          run: |
             pip install -r requirements.txt
+            pip install -r requirements-dev.txt
             
         - name: Format
-          run: |
-            pip install black
+          run:
             black main.py
         
         - name: Lint
-          run: |
-            pip install flake8
+          run:
             flake8 main.py
         
         - name: Test
-          run: |
-            pip install pytest
+          run:
             pytest tests.py
