@@ -32,8 +32,8 @@ jobs:
 
         - name: build
           run:
-            docker build -t .
-            
+            docker build -t my_app .
+
         - name: Commit and push formatted code to master branch
           run: |
             git config user.name "github-actions"
