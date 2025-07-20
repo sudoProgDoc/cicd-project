@@ -40,4 +40,4 @@ jobs:
             git commit -m "Auto format code" || echo "No changes to commit"
             git push origin main --force
           env:
-            GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
